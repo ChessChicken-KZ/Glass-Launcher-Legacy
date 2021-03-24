@@ -24,6 +24,7 @@ import java.net.*;
 import java.nio.file.FileSystem;
 import java.nio.file.*;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 public class InstanceManager {
 
@@ -316,30 +317,6 @@ public class InstanceManager {
     }
 
     private static void addSounds(String instance) {
-        String baseURL = "https://mcresources.modification-station.net/MinecraftResources/";
-        String basePath = Config.getInstancePath(instance) + ".minecraft/resources/";
-        MinecraftResources minecraftResources;
-
-        try {
-            minecraftResources = (new Gson()).fromJson(WebUtils.getStringFromURL(baseURL + "json.php"), MinecraftResources.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-
-        try {
-            for (MinecraftResource minecraftResource : minecraftResources.getFiles()) {
-                File file = new File(basePath + minecraftResource.getFile());
-                File cacheFile = new File(CommonConfig.getGlassPath() + "cache/resources/" + minecraftResource.getFile());
-                String md5 = minecraftResource.getMd5();
-                String url = baseURL + minecraftResource.getFile().replace(" ", "%20");
-
-                FileUtils.downloadFile(url, cacheFile.getParent(), md5);
-                file.getParentFile().mkdirs();
-                Files.copy(cacheFile.toPath(), file.toPath());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        CompletableFuture.runAsync(new ThreadSoundInstalling(instance));
     }
 }
