@@ -1,9 +1,10 @@
-# Glass Launcher Legacy
-A much more lightweight approach to what PyMCL was trying to do.
+## (Experimental Stuff ChessChicken-KZ)
+### Please check the author of this mod and original work, launcher is really nice: https://github.com/ModificationStation/Glass-Launcher-Legacy
+### !!!WARNING!!! This thing is only for educational purposes, I am not responsible for any unknown and known issues and possibilities.
+### If you do not like seeing this, please, go to original repository.
 
-![Steal my code and die trying to understand my thought process. Do it. I dare you.](https://forthebadge.com/images/badges/cc-0.svg)
-![This runs really well, I assure you.](https://forthebadge.com/images/badges/0-percent-optimized.svg)
-![Very stable.](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)
+# Glass Launcher
+A much more lightweight approach to what PyMCL was trying to do.
 
 ## Features
 
