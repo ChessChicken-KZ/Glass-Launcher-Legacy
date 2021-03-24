@@ -1,5 +1,6 @@
 package net.glasslauncher.legacy;
 
+import kz.chesschicken.rubetalogin.RuBetaLogin;
 import net.chris54721.openmcauthenticator.OpenMCAuthenticator;
 import net.glasslauncher.common.CommonConfig;
 import net.glasslauncher.common.FileUtils;
@@ -222,7 +223,9 @@ class MainWindow extends JFrame {
             if (Config.getLauncherConfig().getLoginInfo() != null) {
                 Main.LOGGER.info("Verifying stored Mojang auth token...");
                 try {
-                    OpenMCAuthenticator.validate(Config.getLauncherConfig().getLoginInfo().getAccessToken(), Config.getLauncherConfig().getClientToken());
+                    /* EDITED $!! */
+                   //OpenMCAuthenticator.validate(Config.getLauncherConfig().getLoginInfo().getAccessToken(), Config.getLauncherConfig().getClientToken());
+                    RuBetaLogin.check(Config.getLauncherConfig().getLoginInfo().getUsername(), Config.getLauncherConfig().getClientToken());
                     Main.LOGGER.info("Mojang auth token has been verified!");
                     return true;
                 } catch (Exception e) {
